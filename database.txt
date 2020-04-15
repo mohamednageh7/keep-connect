@@ -1,0 +1,4 @@
+private key : 5db02681-67bb-41ab-ab7f-e56fa4f26c36
+
+..env-cmd way to work
+ "dev": "env-cmd -f ./config/dev.env  nodemon src/index.js",

@@ -1,0 +1,49 @@
+social app 
+
+* Features
+1- sign up (user name, email,password,confirm password,data of birth , send confrimation email)
+
+2- sign in (email,password, save token to stay connected and be able to connect from multi devices )
+
+3- log out (log out from this device or from all devices)
+
+4-Add Information (
+name,
+image,
+bio
+education( school,degree,location,Field od study, from date, check box current, to date, descriptiom),
+experience ( job title, company, location, from Date , current check box, to dtate, describtion ),
+links,
+country,
+social network, button (save,cancle,delete) )
+
+5- edit infromation (
+name,
+image (select image),
+bio
+education( school,degree,location,Field od study, from date, check box current, to date, descriptiom),
+experience ( job title, company, location, from Date , current check box, to dtate, describtion ),
+links,
+country,
+social network , button (save,cancle,delete) )
+
+6- post ( 
+add,
+upload photo,
+video uplaod, 
+delete, 
+edit, 
+comment ( user id, user photo, edit ,delete, reply),
+like ( user id) )
+
+7- chat of user ( array [{friend id: 11,chattext:[{textId:111,date:1/2/3,textdetails: 'hi'}]}] sockio
+
+8- frinds 
+8- timeline (
+  user information  + posts:[{text:'ee',date:2/3,id}] + friends
+
+
+
+
+
+
