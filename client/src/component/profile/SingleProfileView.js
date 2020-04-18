@@ -25,6 +25,9 @@ const SingleProfileView = ({
     socket.on('delete friends', (data) => {
       getFreinds(data);
     });
+    socket.on('get friends', (data) => {
+      getFreinds(data);
+    });
     getFreinds();
   }, [getProfileById]);
   let id = match.params.id;
@@ -39,12 +42,12 @@ const SingleProfileView = ({
   return (
     <section className='container'>
       {profile === null || loading ? (
-        <p className='lead'>
+        <p className='lead '>
           <i className='fas fas-user'></i> User has no profile{' '}
         </p>
       ) : (
         <Fragment>
-          <Link to='/add-friends' className='btn btn-light'>
+          <Link to='/add-friends' className='btn btn-light mt-4'>
             Back To Friends List
           </Link>
 
@@ -52,14 +55,14 @@ const SingleProfileView = ({
           friendList.length === 0 ? (
             <button
               onClick={(e) => handleOnClick(e)}
-              className='btn btn-primary'
+              className='btn btn-primary mt-4'
             >
               Follow
             </button>
           ) : (
             <button
               onClick={(e) => handleRemoveFriends(e)}
-              className='btn btn-primary'
+              className='btn btn-success mt-4'
             >
               Following
             </button>
@@ -67,11 +70,11 @@ const SingleProfileView = ({
           {auth.isAuthenticated &&
             auth.loading === false &&
             auth.user._id === profile.user._id && (
-              <Link to='/edit-profile' className='btn btn-blue'>
+              <Link to='/edit-profile' className='btn btn-blue mt-4'>
                 Edit Profile{' '}
               </Link>
             )}
-          <div className='profile-grid my-1'>
+          <div className='profile-grid my-1 mt-4'>
             <ProfileTop profile={profile} />
             <ProfileAbout about={profile} />
             <div className='profile-exp bg-white p-2'>

@@ -35,13 +35,13 @@ const TimeLine = ({ getPosts, posts: { loading, posts } }) => {
     <Spinner />
   ) : (
     <section className='container'>
-      <h1 className='larget text-primary'>Time line</h1>
+      <h1 className='larget text-primary mt-5'>Time line</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Welecome to the community
       </p>
       <PostfForm />
 
-      <div className='posts'>
+      <div className='posts' style={{ scrollBehavior: 'smooth' }}>
         <Alert />
         {posts.map((post) => {
           return <PostItem key={post._id} post={post} />;

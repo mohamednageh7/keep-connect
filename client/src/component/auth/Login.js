@@ -29,7 +29,7 @@ export const Login = ({ login, auth: { isAuthenticated, loading } }) => {
     <Fragment>
       <section className='container'>
         <Alert />
-        <h1 className='large text-primary'>Sign In</h1>
+        <h1 className='large text-primary mt-5'>Sign In</h1>
         <p className='lead'>
           <i className='fas fa-user'></i> Sign into Your Account
         </p>

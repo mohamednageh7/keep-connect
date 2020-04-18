@@ -349,7 +349,7 @@ button {
   background: url('./component/layout/logoone.gif') no-repeat center
     center/cover;
   height: calc(100vh - 61.38px);
-  margin-top: 61.38px;
+  margin-top: 0;
 }
 
 .landing-inner {

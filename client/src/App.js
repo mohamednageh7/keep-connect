@@ -1,6 +1,9 @@
 import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './my-styles.css';
+
 // import './component/layout/style';
 // My Pages
 import Navbars from './component/layout/Navbar';
@@ -39,35 +42,44 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbars />
+          <div style={{ marginTop: '73px' }}>
+            <Route exact path='/' component={LandingPage} />
 
-          <Route exact path='/' component={LandingPage} />
-
-          <Switch>
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/register' component={Register} />
-            <PrivatRoute exact path='/timeline' component={TimeLine} />
-            <PrivatRoute exact path='/profile' component={Profile} />
-            <PrivatRoute
-              exact
-              path='/create-profile'
-              component={CreateProfile}
-            />
-            <PrivatRoute exact path='/edit-profile' component={EditProfile} />
-            <PrivatRoute
-              exact
-              path='/add-experience'
-              component={AddExperience}
-            />
-            <PrivatRoute exact path='/add-education' component={AddEducation} />
-            <PrivatRoute exact path='/add-friends' component={ProfilesView} />
-            <PrivatRoute
-              exact
-              path='/profile/:id'
-              component={SingleProfileView}
-            />
-            <PrivatRoute exact path='/post/:id' component={SinglePost} />
-            <PrivatRoute exact path='/my-friend' component={FriendsListView} />
-          </Switch>
+            <Switch>
+              <Route exact path='/login' component={Login} />
+              <Route exact path='/register' component={Register} />
+              <PrivatRoute exact path='/timeline' component={TimeLine} />
+              <PrivatRoute exact path='/profile' component={Profile} />
+              <PrivatRoute
+                exact
+                path='/create-profile'
+                component={CreateProfile}
+              />
+              <PrivatRoute exact path='/edit-profile' component={EditProfile} />
+              <PrivatRoute
+                exact
+                path='/add-experience'
+                component={AddExperience}
+              />
+              <PrivatRoute
+                exact
+                path='/add-education'
+                component={AddEducation}
+              />
+              <PrivatRoute exact path='/add-friends' component={ProfilesView} />
+              <PrivatRoute
+                exact
+                path='/profile/:id'
+                component={SingleProfileView}
+              />
+              <PrivatRoute exact path='/post/:id' component={SinglePost} />
+              <PrivatRoute
+                exact
+                path='/my-friend'
+                component={FriendsListView}
+              />
+            </Switch>
+          </div>
         </Fragment>
       </Router>
     </Provider>

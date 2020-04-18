@@ -27,7 +27,7 @@ const Profile = ({
       ) : (
         <Fragment>
           <Alert />
-          <h1 className='large test-primary'>Profile </h1>
+          <h1 className='large test-primary mt-5'>Profile </h1>
           <p className='lead'>
             <i className='fas fa-user'></i> Welecome {user && user.name}
           </p>

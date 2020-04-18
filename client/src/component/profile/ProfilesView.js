@@ -15,7 +15,7 @@ const ProfilesView = ({ auth: { users, loading }, getUsers }) => {
         <Spinner />
       ) : (
         <section className='container'>
-          <h1 className='large text-primary'>Add Friends</h1>
+          <h1 className='large text-primary mt-5'>Add Friends</h1>
           <p className='lead'>
             <i className='fas fa-users'></i> Start make new friends now
           </p>

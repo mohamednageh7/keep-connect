@@ -13,6 +13,8 @@ import {
   ERROR_ADD_COMMENT,
   ERROR_DELETE_COMMENT,
   DELETE_COMMENT,
+  GET_NOTIFICATION,
+  ERROR_GET_NOTIFICATION,
 } from './types';
 
 // Get posts
@@ -191,6 +193,23 @@ export const deleteComment = (id, comment_id) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: ERROR_DELETE_COMMENT,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+// get notification
+export const getNotification = () => async (dispatch) => {
+  try {
+    const res = await axios.get('/api/notification/');
+    // console.log(res.data.notifications);
+    dispatch({
+      type: GET_NOTIFICATION,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: ERROR_GET_NOTIFICATION,
       payload: { msg: err.response.statusText, status: err.response.status },
     });
   }

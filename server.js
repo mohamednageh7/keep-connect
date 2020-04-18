@@ -17,14 +17,15 @@ app.use(express.json({ extended: false }));
 // });
 
 // connect to socket
-// io.on('connection', (socket) => {
-//   console.log('socket connected');
-// });
+io.on('connection', (socket) => {
+  //   console.log('socket connected');
+});
 // Define Route
 app.use('/api/users', require('./routes/api/user'));
 app.use('/api/auth', require('./routes/api/auth'));
 app.use('/api/posts', require('./routes/api/post'));
 app.use('/api/profile', require('./routes/api/profile'));
 app.use('/api/friends', require('./routes/api/friends'));
+app.use('/api/notification', require('./routes/api/notification'));
 
 server.listen(PORT, () => console.log(`Server listen on port ${PORT}`));

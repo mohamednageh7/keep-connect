@@ -29,9 +29,7 @@ export const addFriend = (id) => async (dispatch) => {
 // Get my friend list
 export const getFreinds = () => async (dispatch) => {
   try {
-    console.log('before get friends');
     const res = await axios.get('/api/friends');
-    console.log('after get friends');
     dispatch({
       type: GET_FRIEND,
       payload: res.data.friends,

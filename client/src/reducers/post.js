@@ -10,11 +10,14 @@ import {
   GET_POST_BY_ID,
   ERROR_GET_POST_BY_ID,
   ADD_COMMENT,
+  GET_NOTIFICATION,
+  ERROR_GET_NOTIFICATION,
 } from '../action/types';
 const initialState = {
   posts: [],
   post: null,
   loading: true,
+  notification: [],
   error: {},
 };
 
@@ -70,6 +73,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         post: { ...state.post, comments: payload },
+        loading: false,
+      };
+    case GET_NOTIFICATION:
+      return {
+        ...state,
+        notification: payload.notifications,
         loading: false,
       };
     case CLEAR_PROFILE:

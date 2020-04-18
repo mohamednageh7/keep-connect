@@ -23,7 +23,7 @@ const FriendsListView = ({ auth: { users, loading }, friends, getFreinds }) => {
         <Spinner />
       ) : (
         <section className='container'>
-          <h1 className='large text-primary'>My Friends</h1>
+          <h1 className='large text-primary mt-5'>My Friends</h1>
           <div className='profiles'>
             {friends.friendList.length > 0 ? (
               friends.friendList.map((friend) => (

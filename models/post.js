@@ -23,6 +23,10 @@ const postSchema = new Schema(
     postVideo: {
       type: Buffer,
     },
+    dataType: {
+      type: String,
+      defaul: 'new post',
+    },
     likes: [
       {
         user: {
@@ -32,9 +36,19 @@ const postSchema = new Schema(
         color: {
           type: String,
         },
+        name: {
+          type: String,
+        },
+        avatar: {
+          type: Buffer,
+        },
         date: {
           type: Date,
           default: Date.now,
+        },
+        dataType: {
+          type: String,
+          default: 'likes',
         },
       },
     ],
@@ -47,9 +61,19 @@ const postSchema = new Schema(
         color: {
           type: String,
         },
+        name: {
+          type: String,
+        },
+        avatar: {
+          type: Buffer,
+        },
         date: {
           type: Date,
           default: Date.now,
+        },
+        dataType: {
+          type: String,
+          default: 'unlikes',
         },
       },
     ],
@@ -73,6 +97,10 @@ const postSchema = new Schema(
         date: {
           type: Date,
           default: Date.now,
+        },
+        dataType: {
+          type: String,
+          default: 'comment on',
         },
       },
     ],

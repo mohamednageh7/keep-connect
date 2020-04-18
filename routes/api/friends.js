@@ -15,6 +15,7 @@ router.put('/:id', auth, async (req, res) => {
     if (!user) {
       return res.status(400).json({ msg: 'Not authorized' });
     }
+
     let friendList = await Friends.findOne({ user: req.user.id });
     if (!friendList) {
       friendList = new Friends({

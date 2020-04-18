@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Moment from 'react-moment';
+import moment from 'moment';
 import { connect } from 'react-redux';
 import DefaultImage from '../profile/user2.png';
 import { addLike, addUnlike, deletePost, getPosts } from '../../action/post';
@@ -37,30 +38,57 @@ const PostItem = ({
               src={avatar === null ? DefaultImage : avatar}
               alt=''
             />
-            <h4>{name}</h4>
+            <h4>
+              {name.trim().split(' ').length > 1
+                ? name.trim().split(' ')[0] + ' ' + name.trim().split(' ')[1]
+                : name}
+            </h4>
           </Link>
         </div>
         <div>
           <p className='my-1'>{text}</p>
-          <p className='post-date'>
-            Posted on <Moment format='YYYY/MM/DD'>{createdAt}</Moment>
-          </p>
-          <button
-            onClick={(e) => addLike(_id)}
-            type='button'
-            className='btn btn-light'
-          >
-            <i className='fas fa-thumbs-up'></i>{' '}
-            {likes.length > 0 && <span>{likes.length}</span>}
-          </button>
-          <button
-            onClick={(e) => addUnlike(_id)}
-            type='button'
-            className='btn btn-light'
-          >
-            <i className='fas fa-thumbs-down'></i>{' '}
-            {unlikes.length > 0 && <span>{unlikes.length}</span>}
-          </button>
+
+          <p className='post-date'>Posted on {moment(createdAt).fromNow()}</p>
+          {likes.length > 0 &&
+          likes.map((item) => item.user).includes(auth.user._id) ? (
+            <button
+              onClick={(e) => addLike(_id)}
+              type='button'
+              className='btn btn-blue'
+            >
+              <i className='fas fa-thumbs-up'></i>{' '}
+              {likes.length > 0 && <span>{likes.length}</span>}
+            </button>
+          ) : (
+            <button
+              onClick={(e) => addLike(_id)}
+              type='button'
+              className='btn btn-light'
+            >
+              <i className='fas fa-thumbs-up'></i>{' '}
+              {likes.length > 0 && <span>{likes.length}</span>}
+            </button>
+          )}
+          {unlikes.length > 0 &&
+          unlikes.map((item) => item.user).includes(auth.user._id) ? (
+            <button
+              onClick={(e) => addUnlike(_id)}
+              type='button'
+              className='btn btn-blue'
+            >
+              <i className='fas fa-thumbs-down'></i>{' '}
+              {unlikes.length > 0 && <span>{unlikes.length}</span>}
+            </button>
+          ) : (
+            <button
+              onClick={(e) => addUnlike(_id)}
+              type='button'
+              className='btn btn-light'
+            >
+              <i className='fas fa-thumbs-down'></i>{' '}
+              {unlikes.length > 0 && <span>{unlikes.length}</span>}
+            </button>
+          )}
 
           <Link to={`/post/${_id}`} className={'btn btn-primary'}>
             {comments.length > 0 ? 'Comments ' : 'Comment '}

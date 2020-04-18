@@ -36,7 +36,7 @@ const AddEducation = ({ addEducation, history }) => {
   return (
     <Fragment>
       <section className='container'>
-        <h1 className='large text-primary'>Add Education</h1>
+        <h1 className='large text-primary mt-5'>Add Education</h1>
         <p className='lead'>
           <i className='fas fa-code-branch'></i> Add any school or bootcamp that
           you have

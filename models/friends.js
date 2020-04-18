@@ -14,6 +14,7 @@ const friendSchema = new Schema(
         },
         avatar: {
           type: Buffer,
+          default: null,
         },
         name: {
           type: String,

@@ -36,7 +36,7 @@ const SinglePost = ({
   }, [getPostById]);
   return (
     <section className='container'>
-      <Link to='/posts' className='btn'>
+      <Link to='/timeline' className='btn mt-5'>
         Back To Posts
       </Link>
 

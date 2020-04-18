@@ -28,6 +28,7 @@ router.post(
         name: user.name,
         avatar: user.avatar,
         user: req.user.id,
+        dataType: 'new post',
       });
       newPost.save((err, post) => {
         // console.log(post);
@@ -51,9 +52,7 @@ router.get('/', auth, async (req, res) => {
   try {
     let friendList = await Friends.findOne({ user: req.user.id });
 
-    let postitem = await Post.find({ user: req.user.id }).sort({
-      date: -1,
-    });
+    let postitem = await Post.find({ user: req.user.id }).sort({ data: 1 });
 
     if (!postitem) {
       return res.status(400).json({ msg: 'No post Found! Start now' });
@@ -71,13 +70,14 @@ router.get('/', auth, async (req, res) => {
               postitem.push(item);
               postitem.sort((a, b) => b.createdAt - a.createdAt);
             });
-            // console.log(postitem);
             return res.json(postitem);
           }
+          postitem.sort((a, b) => b.createdAt - a.createdAt);
           return res.json(postitem);
         });
       }
     } else {
+      postitem.sort((a, b) => b.createdAt - a.createdAt);
       res.json(postitem);
     }
   } catch (err) {
@@ -167,7 +167,12 @@ router.put('/likes/:id', auth, async (req, res) => {
         (like) => like.user.toString() !== req.user.id
       );
     } else {
-      post.likes.unshift({ user: req.user.id, color: 'blue' });
+      post.likes.unshift({
+        user: req.user.id,
+        name: req.user.name,
+        avatar: req.user.avatar,
+        dataType: 'likes your post',
+      });
     }
 
     await post.save((err, post) => {
@@ -216,7 +221,12 @@ router.put('/unlike/:id', auth, async (req, res) => {
       );
       // return res.status(400).json({ msg: 'Post already unliked' });
     } else {
-      post.unlikes.unshift({ user: req.user.id, color: 'blue' });
+      post.unlikes.unshift({
+        user: req.user.id,
+        name: req.user.name,
+        avatar: req.user.avatar,
+        dataType: 'unlikes you post',
+      });
     }
 
     await post.save((err, post) => {
@@ -254,6 +264,7 @@ router.post(
         name: user.name,
         avatar: user.avatar,
         user: req.user.id,
+        dataType: 'comments on your post',
       };
       post.comments.push(newcomment);
       await post.save((err, post) => {
